@@ -1,6 +1,6 @@
 const fs = require('fs'); 
 import type { NextApiRequest, NextApiResponse } from 'next';
-let operators = require('./vercel/path0/pages/api/data/operators.json');
+let operators = require('/vercel/path0/pages/api/data/operators.json');
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     let operator = {
@@ -15,6 +15,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 
 const updateData = () => {
-  fs.writeFileSync('./vercel/path0/pages/api/data/operators.json', JSON.stringify(operators, null, 2)); 
+  fs.writeFileSync('/vercel/path0/pages/api/data/operators.json', JSON.stringify(operators, null, 2)); 
 }
 
