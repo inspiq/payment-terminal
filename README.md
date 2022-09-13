@@ -1,4 +1,4 @@
-Vercel
+##Vercel:
 https://payment-terminal-cw00oqmbp-inspiq.vercel.app/
 
 ## Getting Started
