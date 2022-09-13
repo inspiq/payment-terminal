@@ -9,21 +9,10 @@ import Back from './styled/Back'
 import Input from './styled/Input'
 import Title from './styled/Title'
 import Btn from './styled/Btn'
+import Form from './styled/Form'
 import Validator from './styled/Validator'
 import { useFormik } from 'formik'
 import { basicSchema } from '../schemas';
-
-const Create = styled.form`
-  max-width: 310px;
-  width: 100%;
-  background: #fff;
-  box-shadow: rgb(0 0 0 / 16%) 0px 20px 64px 8px;
-  border-radius: 10px;
-  padding: 30px 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
 
 const CreateOperator: React.FC = () => {
   const { request } = useHttp();
@@ -53,7 +42,7 @@ const CreateOperator: React.FC = () => {
 
   return (
     <AppWrapper>
-      <Create onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Title>Введите <span>любимого</span> оператора</Title>
         <Input 
           value={values.operator} 
@@ -67,7 +56,7 @@ const CreateOperator: React.FC = () => {
         {errors.operator && touched.operator && <Validator>{errors.operator}</Validator>}
         <Btn disabled={isSubmitting} type="submit">Продолжить</Btn>
         <Back><Link href="/">Вернуться назад</Link></Back>
-      </Create>
+      </Form>
       <ToastContainer />
     </AppWrapper>
   )
