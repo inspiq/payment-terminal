@@ -10,12 +10,10 @@ const Input = styled.input`
   transition: .4s;
   font-size: 16px;
   font-weight: 400;
-
   &:active,
   &:focus {
     border-bottom: 2px solid rgb(255, 130, 0);
   }
-
   &::placeholder {
    color: #a0a0a0;
    font-size: 14px;

@@ -14,11 +14,9 @@ const Btn = styled.button`
   font-weight: 400;
   margin-top: 30px;
   transition: .4s;
-
   &:hover {
     background: rgb(255, 125, 0);
   }
-
   &:disabled,
   &[disabled] {
     background-color: #a0a0a0;
