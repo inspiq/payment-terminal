@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import NumberFormat from 'react-number-format';
 import { useHttp } from '../hooks/useHttp';
 import Back from './styled/Back'
+import Btn from './styled/Btn'
 import Validator from './styled/Validator'
 import { useFormik } from 'formik'
 import { advSchema } from '../schemas';
@@ -55,31 +56,6 @@ const PaymentTitle = styled.h1`
   > span {
     color: rgb(255, 130, 0);
     text-transform: uppercase;
-  }
-`
-
-const PaymentBtn = styled.button`
-  width: 100%;
-  height: 48px;
-  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  background: rgb(255, 140, 0);
-  border: none;
-  border-radius: 24px;
-  box-shadow: none;
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 30px;
-  transition: .4s;
-
-  &:hover {
-    background: rgb(255, 125, 0);
-  }
-
-  &:disabled,
-  &[disabled] {
-    background-color: #a0a0a0;
   }
 `
 
@@ -187,7 +163,7 @@ const PaymentOperator: React.FC = () => {
           type="text"
         ></NumberFormat>
         {errors.money && touched.money && <Validator>{errors.money}</Validator>}
-        <PaymentBtn disabled={isSubmitting} type="submit">Оплатить</PaymentBtn>
+        <Btn disabled={isSubmitting} type="submit">Оплатить</Btn>
         <Back><Link href="/">Вернуться назад</Link></Back>
       </Payment>
       <ToastContainer />

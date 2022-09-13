@@ -6,7 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHttp } from '../hooks/useHttp';
 import Back from './styled/Back'
+import Input from './styled/Input'
 import Title from './styled/Title'
+import Btn from './styled/Btn'
 import Validator from './styled/Validator'
 import { useFormik } from 'formik'
 import { basicSchema } from '../schemas';
@@ -21,53 +23,6 @@ const Create = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`
-
-const CreateInput = styled.input`
-  width: 100%;
-  height: 35px;
-  padding-left: 5px;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid rgba(0,0,0,0.2);
-  transition: .4s;
-  font-size: 16px;
-  font-weight: 400;
-
-  &:active,
-  &:focus {
-    border-bottom: 2px solid rgb(255, 130, 0);
-  }
-
-  &::placeholder {
-   color: #a0a0a0;
-   font-size: 14px;
-  }
-`
-
-const CreateBtn = styled.button`
-  width: 100%;
-  height: 48px;
-  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  background: rgb(255, 140, 0);
-  border: none;
-  border-radius: 24px;
-  box-shadow: none;
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 30px;
-  transition: .4s;
-
-  &:hover {
-    background: rgb(255, 125, 0);
-  }
-
-  &:disabled,
-  &[disabled] {
-    background-color: #a0a0a0;
-  }
 `
 
 const CreateOperator: React.FC = () => {
@@ -100,7 +55,7 @@ const CreateOperator: React.FC = () => {
     <AppWrapper>
       <Create onSubmit={handleSubmit}>
         <Title>Введите <span>любимого</span> оператора</Title>
-        <CreateInput 
+        <Input 
           value={values.operator} 
           onChange={handleChange}
           onBlur={handleBlur}
@@ -108,9 +63,9 @@ const CreateOperator: React.FC = () => {
           type="text"
           name="operator"
           className={errors.operator && touched.operator ? "input-error" : ""}
-        ></CreateInput>
+        ></Input>
         {errors.operator && touched.operator && <Validator>{errors.operator}</Validator>}
-        <CreateBtn disabled={isSubmitting} type="submit">Продолжить</CreateBtn>
+        <Btn disabled={isSubmitting} type="submit">Продолжить</Btn>
         <Back><Link href="/">Вернуться назад</Link></Back>
       </Create>
       <ToastContainer />
