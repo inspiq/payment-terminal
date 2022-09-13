@@ -1,0 +1,4 @@
+.input-error:active, 
+.input-error:focus {
+  border-bottom: 2px solid red!important;
+}
