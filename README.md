@@ -1,3 +1,6 @@
+Vercel
+https://payment-terminal-cw00oqmbp-inspiq.vercel.app/
+
 ## Getting Started
 
 First, run the development server:
