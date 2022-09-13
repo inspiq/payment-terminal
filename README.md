@@ -1,5 +1,5 @@
 ## Vercel:
-https://payment-terminal-cw00oqmbp-inspiq.vercel.app/
+https://payment-terminal-mu.vercel.app/
 
 ## Getting Started
 
