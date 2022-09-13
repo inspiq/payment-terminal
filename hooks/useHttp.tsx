@@ -10,7 +10,7 @@ export const useHttp = () => {
         body: JSON.stringify(body)
       });
     } else {
-      const res = await fetch(`https://payment-terminal-evnhv741c-inspiq.vercel.app/${url}`);
+      const res = await fetch(`https://payment-terminal-mu.vercel.app//${url}`);
       const data = await res.json();
       return data
     }
