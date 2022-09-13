@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import AppWrapper from '../components/AppWrapper'
 import styled from 'styled-components'
 import Operators from '../components/Operators'
