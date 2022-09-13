@@ -1,11 +1,10 @@
 export const useHttp = () => {
-  const request = async(url: string, method: string = 'GET', body: any) => {
+  const request = async(url: string, method: string = 'GET', body: string) => {
     if (method == "POST") {
       const response = await fetch(`${process.env.API_HOST}/addOperator`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          'User-Agent': '*'
+          'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(body)
       });
