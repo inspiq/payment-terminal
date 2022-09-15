@@ -1,18 +1,48 @@
-import React from 'react'
-import styled from 'styled-components'
-import AppWrapper from '../components/AppWrapper'
+import React, { FC, ReactNode } from 'react'
+import AppWrapper from '../components/Wrapper/Wrapper'
 import Link from 'next/link'
+import styled from 'styled-components'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHttp } from '../hooks/useHttp';
-import Back from './styled/Back'
-import Input from './styled/Input'
-import Title from './styled/Title'
-import Btn from './styled/Btn'
-import Form from './styled/Form'
-import Validator from './styled/Validator'
+import Back from '../components/Back/Back'
+import Title from '../components/Title/Title'
+import Btn from '../components/Button/Btn'
+import Validator from '../components/Validator/Validator'
 import { useFormik } from 'formik'
 import { basicSchema } from '../schemas';
+
+const Form = styled.form`
+  max-width: 310px;
+  width: 100%;
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 16%) 0px 20px 64px 8px;
+  border-radius: 10px;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const Input = styled.input`
+  width: 100%;
+  height: 35px;
+  padding-left: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  transition: .4s;
+  font-size: 16px;
+  font-weight: 400;
+  &:active,
+  &:focus {
+    border-bottom: 2px solid rgb(255, 130, 0);
+  }
+  &::placeholder {
+   color: #a0a0a0;
+   font-size: 14px;
+  }
+`
 
 const CreateOperator: React.FC = () => {
   const { request } = useHttp();
@@ -29,12 +59,11 @@ const CreateOperator: React.FC = () => {
       progress: undefined,
     });
     actions.resetForm()
-    console.log(actions)
   }
 
-  const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+  const { values, errors, dirty, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      operator: "",
+      title: "",
     },
     validationSchema: basicSchema,
     onSubmit
@@ -45,16 +74,16 @@ const CreateOperator: React.FC = () => {
       <Form onSubmit={handleSubmit}>
         <Title>Введите <span>любимого</span> оператора</Title>
         <Input 
-          value={values.operator} 
+          value={values.title} 
           onChange={handleChange}
           onBlur={handleBlur}
           placeholder="МТС, Билайн, Мегафон.." 
           type="text"
-          name="operator"
-          className={errors.operator && touched.operator ? "input-error" : ""}
+          name="title"
+          className={errors.title && touched.title ? "input-error" : ""}
         ></Input>
-        {errors.operator && touched.operator && <Validator>{errors.operator}</Validator>}
-        <Btn disabled={isSubmitting} type="submit">Продолжить</Btn>
+        {errors.title && touched.title && <Validator>{errors.title}</Validator>}
+        <Btn disabled={isSubmitting || !dirty} type="submit">Продолжить</Btn>
         <Back><Link href="/">Вернуться назад</Link></Back>
       </Form>
       <ToastContainer />

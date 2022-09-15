@@ -1,5 +1,5 @@
 import React from 'react'
-import AppWrapper from '../components/AppWrapper'
+import AppWrapper from '../components/Wrapper/Wrapper'
 import styled from 'styled-components'
 import Operators from '../components/Operators'
 import Link from 'next/link'

@@ -3,7 +3,7 @@ import * as yup from 'yup';
 const phoneRegExp = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11,14}(\s*)?$/
 
 export const basicSchema = yup.object().shape({
-  operator: yup.string().required("Введите оператора")
+  title: yup.string().required("Введите оператора")
 })
 
 export const advSchema = yup.object().shape({

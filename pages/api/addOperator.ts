@@ -5,7 +5,7 @@ let operators = require('./data/operators.json');
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     let operator = {
       id: Math.random(),
-      title: req.body.operator,
+      title: req.body.title
     }
     
     operators.push(operator);
