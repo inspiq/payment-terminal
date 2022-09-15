@@ -30,9 +30,12 @@ const CardItem = styled.div`
   }
 `
 
+type OperatorItem = {
+  title: string;
+  id: React.Key;
+}
 export type OperatorsType = {
-  operators: object
-  map: any
+  operators: OperatorItem[]
 }
 
 const Operators:FC<OperatorsType> = ({ operators }) => {
@@ -41,7 +44,7 @@ const Operators:FC<OperatorsType> = ({ operators }) => {
   }
   return (
     <Card>
-      {operators.map((element: { title: string; id: React.Key }) => (
+      {operators.map((element) => (
       <Link href={`/${element.title}`} key={element.id}>
         <CardItem>
           {element.title}
