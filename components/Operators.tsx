@@ -32,6 +32,7 @@ const CardItem = styled.div`
 
 export type OperatorsType = {
   operators: object
+  map: any
 }
 
 const Operators:FC<OperatorsType> = ({ operators }) => {
