@@ -30,11 +30,11 @@ const CardItem = styled.div`
   }
 `
 
-export type operatorsType = {
-  operators: any
+export type OperatorsType = {
+  operators: object
 }
 
-const Operators:FC<operatorsType> = ({ operators }) => {
+const Operators:FC<OperatorsType> = ({ operators }) => {
   if (!operators) {
     return null
   }
