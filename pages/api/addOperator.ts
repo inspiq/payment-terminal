@@ -1,6 +1,6 @@
 const fs = require('fs'); 
 import type { NextApiRequest, NextApiResponse } from 'next';
-let operators = require('./data/operators.json');
+import operators from './data/operators.json';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     let operator = {
