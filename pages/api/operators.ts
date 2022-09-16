@@ -1,4 +1,4 @@
-import operators from './data/operators.json';
+import operators from '../../public/operators.json';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
