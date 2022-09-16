@@ -1,13 +1,10 @@
-import React, { FC, ReactNode } from 'react'
+import Link from 'next/link'
+import React from 'react'
 import Back from './Back.styles'
 
-type ComponentProps = {
-  children: ReactNode
-}
-
-const BackComponent:FC<ComponentProps> = ({children}) => {
+const BackComponent: React.FC = () => {
   return (
-    <Back>{children}</Back>
+    <Back><Link href="/">Вернуться назад</Link></Back>
   )
 }
 

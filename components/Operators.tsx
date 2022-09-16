@@ -34,7 +34,8 @@ type OperatorItem = {
   title: string;
   id: React.Key;
 }
-export type OperatorsType = {
+
+type OperatorsType = {
   operators: OperatorItem[]
 }
 

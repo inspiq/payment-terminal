@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
 import AppWrapper from '../components/Wrapper/Wrapper'
-import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NumberFormat from 'react-number-format';
@@ -64,22 +63,25 @@ const Interval = styled.div `
   margin: 10px 0px;
 `
 
+type FloatProps = {
+  floatValue: number | undefined
+}
+
 const PaymentOperator: React.FC = () => {
+  const [isPaid, setIsPaid] = useState(false);
   const MAX_VAL = 1000;
   const MIN_VAL = 1;
-  const [isPaid, setIsPaid] = useState(false);
 
-  const withValueLimit = ({ floatValue }: any) => {
+  const withValueLimit = ({ floatValue = 0 }: FloatProps) => {
     if (floatValue <= MAX_VAL && floatValue >= MIN_VAL && floatValue !== 0) return true;
     return false;
   };
-
 
   const router = useRouter();
   const { request } = useHttp();
   const { id } = router.query
 
-  const onSubmit = async(actions: any) => {
+  const onSubmit = async() => {
     const data = await request('/api/paymentResult', 'GET', null);
     if (data.isBool) {
       toast.success(data.message, {
@@ -103,7 +105,6 @@ const PaymentOperator: React.FC = () => {
         progress: undefined,
       })
     }
-    actions.resetForm()
   }
 
   const Exit = () => {
@@ -153,7 +154,7 @@ const PaymentOperator: React.FC = () => {
         ></NumberFormat>
         {errors.money && touched.money && <Validator>{errors.money}</Validator>}
         <Btn disabled={isSubmitting} type="submit">Оплатить {values.money}</Btn>
-        <Back><Link href="/">Вернуться назад</Link></Back>
+        <Back />
       </Form>
       <ToastContainer />
       {isPaid ? <Block></Block> : null}

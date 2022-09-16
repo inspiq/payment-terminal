@@ -1,6 +1,5 @@
-import React, { FC, ReactNode } from 'react'
+import React from 'react'
 import AppWrapper from '../components/Wrapper/Wrapper'
-import Link from 'next/link'
 import styled from 'styled-components'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,12 +43,20 @@ const Input = styled.input`
   }
 `
 
+type ValuesProps = {
+  title: string
+}
+
+type ActionsProps = {
+  resetForm(): void;
+}
+
 const CreateOperator: React.FC = () => {
   const { request } = useHttp();
 
-  const onSubmit = async(values: any, actions: any) => {
+  const onSubmit = async(values: ValuesProps, actions: ActionsProps) => {
     const data = await request('/api/addOperator', 'POST', values);
-    toast.success("Оператор успешно добавлен!", {
+    toast.success("Оператор успешно добавлен!", { 
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
@@ -61,7 +68,7 @@ const CreateOperator: React.FC = () => {
     actions.resetForm()
   }
 
-  const { values, errors, dirty, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+  const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       title: "",
     },
@@ -83,8 +90,8 @@ const CreateOperator: React.FC = () => {
           className={errors.title && touched.title ? "input-error" : ""}
         ></Input>
         {errors.title && touched.title && <Validator>{errors.title}</Validator>}
-        <Btn disabled={isSubmitting || !dirty} type="submit">Продолжить</Btn>
-        <Back><Link href="/">Вернуться назад</Link></Back>
+        <Btn disabled={isSubmitting} type="submit">Продолжить</Btn>
+        <Back />
       </Form>
       <ToastContainer />
     </AppWrapper>
