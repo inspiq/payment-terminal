@@ -1,6 +1,6 @@
 const fs = require('fs'); 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import operators from '../../public/operators.json';
+import operators from './data/J_n5Fz-ImaCg1gCf33PMO/index.json';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     let operator = {
@@ -15,6 +15,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 
 const updateData = () => {
-  fs.writeFileSync('./public/operators.json', JSON.stringify(operators, null, 2)); 
+  fs.writeFileSync('./data/J_n5Fz-ImaCg1gCf33PMO/index.json', JSON.stringify(operators, null, 2)); 
 }
 
