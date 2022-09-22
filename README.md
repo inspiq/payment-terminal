@@ -1,6 +1,3 @@
-## Vercel:
-https://payment-terminal-mu.vercel.app/
-
 ## Getting Started
 
 First, run the development server:
